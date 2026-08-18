@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== 全局基础样式 ===== */
+:root {
+  --color-yanzhi: #d12c2c;
+  --color-daizi: #7c3aed;
+  --color-daiblue: #1a1a2e;
+  --color-yuebai: #f0f5ff;
+  --color-liujin: #d4af37;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis 接管平滑滚动，禁用原生 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: linear-gradient(180deg, #0f0f1e 0%, #1a1a2e 40%, #2d1b4e 100%);
+  color: #f0f5ff;
+  font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* 隐藏滚动条但保留滚动功能（Lenis 模式） */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ===== 自定义滚动条 ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0f0f1e;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #d12c2c, #7c3aed);
+  border-radius: 3px;
+}
+
+/* ===== 文字选中样式 ===== */
+::selection {
+  background: rgba(209, 44, 44, 0.4);
+  color: #f0f5ff;
+}
+
+/* ===== 工具类 ===== */
+.text-gradient-romance {
+  background: linear-gradient(135deg, #f0f5ff 0%, #e4c6d0 40%, #d12c2c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #f0d060 0%, #d4af37 50%, #b8941f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glow-yanzhi {
+  text-shadow: 0 0 20px rgba(209, 44, 44, 0.6), 0 0 40px rgba(209, 44, 44, 0.3);
+}
+
+.glow-daizi {
+  text-shadow: 0 0 20px rgba(124, 58, 237, 0.6), 0 0 40px rgba(124, 58, 237, 0.3);
+}
+
+/* 玻璃拟态卡片 */
+.glass-card {
+  background: rgba(26, 26, 46, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(240, 245, 255, 0.1);
+  border-radius: 1rem;
+}
+
+/* 闪烁动画 */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+.animate-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+/* 爱心脉动 */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.15); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.1); }
+  60% { transform: scale(1); }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+/* 渐入动画 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* 减少动画偏好 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
